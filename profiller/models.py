@@ -8,7 +8,7 @@ class Profil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profil')
     bio = models.CharField(max_length=300, blank=True,null=True)
     sehir = models.CharField(max_length=120, blank=True,null=True)
-    foto = models.ImageField(null=True, blank=True,upload_to='profil_fotolari/%Y/%m/')
+   # foto = models.ImageField(null=True, blank=True,upload_to='profil_fotolari/%Y/%m/')
 
     class Meta:
         verbose_name_plural = 'profiller'
@@ -16,7 +16,7 @@ class Profil(models.Model):
     def __str__(self):
         return self.user.username
 
-    def save(self, *args, **kwargs):
+    """   def save(self, *args, **kwargs):
         # image resize
         super().save(*args,**kwargs)
         if self.foto:
@@ -24,7 +24,7 @@ class Profil(models.Model):
             if img.height > 600 or img.width > 600:
                 output_size = (600,600)
                 img.thumbnail(output_size)
-                img.save(self.foto.path)
+                img.save(self.foto.path)"""
 
 
 class ProfilDurum(models.Model):
