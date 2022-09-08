@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView,RetrieveUpdateDestroyAPIView
+from profiller.api.pagination import SmallPagination,LargePagination
 from profiller.api.permissions import IsDurumSahibiOrReadOnly,IsProfilSahibiOrReadOnly
 from profiller.api.serializers import ProfilSerializer,ProfilDurumSerializer
 from profiller.models import Profil,ProfilDurum
@@ -8,6 +9,7 @@ from profiller.models import Profil,ProfilDurum
 class ProfileListAPIView(ListAPIView):
     queryset = Profil.objects.all()
     serializer_class = ProfilSerializer
+    pagination_class = SmallPagination
 
 
 class ProfileIdListAPIView(RetrieveUpdateDestroyAPIView):
